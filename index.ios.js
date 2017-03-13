@@ -9,45 +9,48 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
+	ScrollView,
   View
 } from 'react-native';
 
+import CalendarStrip from 'react-native-calendar-strip';
+
+import styles from './styles.js';
+
+// Formats a given date to omit times more precise than the day.
+const formatDate = (date) => {
+	string = date.toString().toUpperCase();
+	return (string.substring(0,3) + ", " + string.substring(4, 11))
+}
+
+const changeDate = (date) => {
+	console.log(date.toString())
+}
+
 export default class gymPlanner extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {currentDate: new Date() };
+	}
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+				<View>
+					<View>
+						<CalendarStrip
+							style={{paddingTop:25, paddingBottom: 10}}
+							ref={(ref) => this.cal = ref} />
+						<Text style={styles.bigTitle}>{formatDate(this.state.currentDate)}</Text>
+					</View>
+					<ScrollView>
+						<Text style={styles.title}>Bicep Curls</Text>
+						<Text style={styles.info}>Previous week: 3 x 10 @ 40 lb</Text>
+
+					</ScrollView>
+
+				</View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
 
 AppRegistry.registerComponent('gymPlanner', () => gymPlanner);
