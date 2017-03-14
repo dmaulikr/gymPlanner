@@ -13,12 +13,14 @@ const styles = StyleSheet.create({
 		textAlign: 'left',
 		fontSize:20, 
 		fontWeight: 'bold',
+		paddingLeft: 20,
 	},
 
 	info: {
 		textAlign: 'left',
 		fontSize: 15,
 		fontWeight: 'normal',
+		paddingLeft: 20,
 	},
 });
 
