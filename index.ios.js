@@ -73,8 +73,8 @@ export default class gymPlanner extends Component {
 							/>
 
 						<TouchableHighlight
+							ref={ref => this.update = ref}
 							style={styles.inputButton}	
-							onPress={this.onPress}>
 								<Text>Update</Text>
 						</TouchableHighlight>
 
