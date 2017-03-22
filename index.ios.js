@@ -32,7 +32,13 @@ const changeDate = (date) => {
 export default class gymPlanner extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {currentDate: formatDate(new Date()) };
+		this.state = {currentDate: formatDate(new Date()),
+									usedColor: 'lightblue'};
+
+	}
+
+	onPress = () => {
+
 	}
 
   render() {
@@ -52,10 +58,25 @@ export default class gymPlanner extends Component {
 						<Text style={styles.title}>Bicep Curls</Text>
 						<Text style={styles.info}>Previous week: 3 x 10 @ 40 lb</Text>
 
+						<Text style={styles.info}>New data:</Text>
 						<TextInput
 							placeholder='Weight'
-							style={styles.info}
+							style={styles.input}
 							/>
+						<TextInput
+							placeholder='Reps'
+							style={styles.input}
+							/>
+						<TextInput
+							placeholder='Sets'
+							style={styles.input}
+							/>
+
+						<TouchableHighlight
+							style={styles.inputButton}	
+							onPress={this.onPress}>
+								<Text>Update</Text>
+						</TouchableHighlight>
 
 					</ScrollView>
 
